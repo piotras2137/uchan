@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if thread %}
+        {% if thread.photo %}
+            <img id="thread_pic" src="{{ thread.photo.url }}"  height="100" alt=""></img>
+            <br>
+            <button onclick="powieksz('thread_pic')">powieksz</button> 
+            <button onclick="pomniejsz('thread_pic')">pomniejsz</button> 
+            <br>       
+        {% endif %}
+
+        {{ thread.title }}
+        {{ thread.name }}
+        {{ thread.date }}
+        id {{ thread.id }}
+        <br>
+        {{ thread.text }}
+        <br>
+        <br>
+        <br>
+
+        {% if responses %}
+            {% for response in responses %}
+            {% if response.photo %}
+            <img id="{{ response.photo }}pic" src="{{ response.photo.url }}"  height="100" alt=""></img>
+            <br>
+            <button onclick="powieksz('{{response.photo}}pic')">powieksz</button>
+            <button onclick="pomniejsz('{{response.photo}}pic')">pomniejsz</button>
+            <br> 
+        {% endif %}
+                {{ response.name }}
+                {{ response.date }}
+                id {{ response.id }}
+                <br>
+                {{ response.text }}
+                <br>
+                <br>
+            {% endfor %}
+        {% endif %}
+        <br>
+        <br>
+    {% else %}
+        nie ma takiego threadu
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{ form }}
+<button type="submit">odpowiedz se normalnei</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% if board %}
+    <img src="{{ board.cover.url }}" alt=""></img>
+    <br>
+    {{ board.name }}
+    <br>
+    {{ board.description }}
+    <br><br>
+{% endif %}
+
+
+<div id="post" style="visibility: hidden;">
+    <form method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">zrob se normalnie watek</button>
+    </form>
+</div>
+
+<button onclick="pokaz('post')">pokaz</button> 
+<button onclick="schowaj('post')">schowaj</button>     
+
+
+{% if thread_list %}
+{% for thread in thread_list %}
+<div>
+    <div >
+    {% if thread.photo %}
+        <img id="thread_pic" src="{{ thread.photo.url }}"  height="100" alt=""></img>
+        <br>     
+    {% endif %}
+    </div>
+    <div>
+        <p>
+    <a href="/thread/{{thread.id}}/">{{ thread.title }}</a>
+    {{ thread.name }}
+    {{ thread.date }}
+    id {{ thread.id }}
+    </p>
+    {{ thread.text }}
+    </div>
+</div>
+<br>
+{% endfor %}
+{% else %}
+nie ma threadow
+{% endif %}
+
+{% endblock %}

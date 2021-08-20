@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if thread_list %}
+        {% for thread in thread_list %}
+        <div>
+            <div >
+            {% if thread.photo %}
+                <img id="thread_pic" src="{{ thread.photo.url }}"  height="100" alt=""></img>
+                <br>     
+            {% endif %}
+            </div>
+            <div>
+                <p>
+            <a href="thread/{{thread.id}}/">{{ thread.title }}</a>
+            {{ thread.name }}
+            {{ thread.date }}
+            id {{ thread.id }}
+            </p>
+            {{ thread.text }}
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    {% else %}
+        nie ma threadow
+    {% endif %}
+
+{% endblock %}

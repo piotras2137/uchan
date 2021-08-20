@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href='/'>index</a> /   
+    {% for board in board_list %}
+    <a href="/{{board.link}}/">{{ board.link }}</a>/ 
+    {% endfor %}
+    <br>
+    {% block content %}
+    {% endblock %}
+</body>
+<script>
+    function powieksz(id) {
+        document.getElementById(id).style.height="auto";
+    }
+    function pomniejsz(id) {
+        document.getElementById(id).style.height='100px';
+    }
+    function pokaz(id) {
+        document.getElementById(id).style.visibility='visible';
+    }
+    function schowaj(id) {
+        document.getElementById(id).style.visibility='hidden';
+    }
+</script>
+</html>
