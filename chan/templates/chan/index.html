@@ -1,31 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-    {% if thread_list %}
-    <div class="header">Last Threads</h2></div>
-    <div class="thread_list">
-        {% for thread in thread_list %}
-        <div class="thread">
-            <p class="thread_header">
+{% if thread_list %}
+<div class="header">Last Threads</h2>
+</div>
+<div class="thread_list">
+    {% for thread in thread_list %}
+    <div class="thread">
+        <p class="thread_header">
             <a href="thread/{{thread.id}}/" class="thread_link">{{ thread.title }}</a>
             {{ thread.name }}
             {{ thread.date }}
             id {{ thread.id }}
-            </p>
+        </p>
+        <div class="thread_content">
             <div class="thread_image_container">
-            {% if thread.photo %}
+                {% if thread.photo %}
                 <img id="thread_pic" class="thread_image" src="{{ thread.photo.url }}" alt=""></img>
-                <br>      
-            {% endif %}
+                <br>
+                {% endif %}
             </div>
             <div class="thread_text">
-            {{ thread.text }}
+                {{ thread.text }}
             </div>
         </div>
-        <br>
-        {% endfor %}
     </div>
-    {% else %}
-        nie ma threadow
-    {% endif %}
+    <br>
+    {% endfor %}
+</div>
+{% else %}
+nie ma threadow
+{% endif %}
 
 {% endblock %}
