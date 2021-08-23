@@ -7,10 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <a href='/'>index</a> /   
+    <p class="topbar">
+    <a href='/' class="topba_links">index</a> /   
     {% for board in board_list %}
-    <a href="/{{board.link}}/">{{ board.link }}</a>/ 
+    <a href="/{{board.link}}/" class="topba_links">{{ board.link }}</a>/ 
     {% endfor %}
+    </p>
     <br>
     {% block content %}
     {% endblock %}

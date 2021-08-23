@@ -2,10 +2,12 @@
 {% block content %}
     {% if thread %}
         {% if thread.photo %}
+        <div>
             <img id="thread_pic" src="{{ thread.photo.url }}"  height="100" alt=""></img>
             <br>
             <button onclick="powieksz('thread_pic')">powieksz</button> 
             <button onclick="pomniejsz('thread_pic')">pomniejsz</button> 
+        </div>
             <br>       
         {% endif %}
 
@@ -21,20 +23,27 @@
 
         {% if responses %}
             {% for response in responses %}
+            <div class="response">
             {% if response.photo %}
-            <img id="{{ response.photo }}pic" src="{{ response.photo.url }}"  height="100" alt=""></img>
-            <br>
-            <button onclick="powieksz('{{response.photo}}pic')">powieksz</button>
-            <button onclick="pomniejsz('{{response.photo}}pic')">pomniejsz</button>
-            <br> 
-        {% endif %}
+                <img id="{{ response.photo }}pic" src="{{ response.photo.url }}"  height="100" alt=""></img>
+                <br>
+                <button onclick="powieksz('{{response.photo}}pic')">powieksz</button>
+                <button onclick="pomniejsz('{{response.photo}}pic')">pomniejsz</button>
+                </div>
+                <br> 
+            {% endif %}
+            <div class="response_block">
+                <p class="response_header">
                 {{ response.name }}
                 {{ response.date }}
                 id {{ response.id }}
-                <br>
+                </p>
+                <div class="response_text">
                 {{ response.text }}
+                </div>
                 <br>
                 <br>
+            </div>
             {% endfor %}
         {% endif %}
         <br>
@@ -43,10 +52,11 @@
         nie ma takiego threadu
     {% endif %}
 
+<div class="response_form">
     <form method="POST" enctype="multipart/form-data" action="">
         {% csrf_token %}
         {{ form }}
-<button type="submit">odpowiedz se normalnei</button>
+<button type="submit">reply</button>
     </form>
-
+</div>
 {% endblock %}

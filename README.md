@@ -33,3 +33,6 @@
     python manage.py createsuperuser
     ```
     and follow instructions included there
+
+primary #0d46a0
+secondary #2196f3
