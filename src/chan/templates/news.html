@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="sitename">{{site.sitename}}</h1>
+<table>
+    <tr>
+        <th>News</th>
+    </tr>
+    <tr>
+        <td>
+            <h2 class="newstitle">{{news.title}}</h2>
+            <p>{{news.content}}</p>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}

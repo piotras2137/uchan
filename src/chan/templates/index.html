@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="wrap">
+  <h1 class="sitename">{{site.sitename}}</h1>
+  <table>
+    <tr>
+      <th>WELCOME</th>
+    </tr>
+    <tr>
+      <td>{{site.welcome}}</td>
+    </tr>
+  </table>
+  <br>
+  <table>
+    <tr>
+      <th>
+        LATEST NEWS
+      </th>
+    </tr>
+
+    {% for new in news %}
+    <tr>
+      <td>
+        <a href="news/{{new.id}}">{{new.title}}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <table>
+    <tr>
+      <th class="halftitle">BOARD</th>
+      <th class="halftitle">DESCRIPTION</th>
+    </tr>
+    {% for board in boards %}
+    <tr>
+      <td> {% if board.is_nsfw == True %}
+        <b class="nsf">NSFW</b>
+        {%endif%}
+        <a href="{{board.url}}">{{board.name}}</a>
+      </td>
+      <td>{{board.description}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br />
+  <table>
+    <tr>
+      <th>
+        LATEST REPLIES
+      </th>
+    </tr>
+    {% for thread in threads %}
+    <tr>
+      <td>
+        /{{thread.b_id.url}}/
+        <a href="{{thread.b_id.url}}/thread/{{thread.id}}">{{thread.subject}}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

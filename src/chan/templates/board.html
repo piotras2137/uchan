@@ -1,0 +1,38 @@
+{% extends "base.html "%}
+
+{% block content %}
+<h2 class="boardname">/{{board.url}}/ {{ board.name }}</h2>
+<p class="boarddescription">{{ board.description }}</p>
+
+<br />
+
+<div class="thread_form" id="post">
+  <form method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">start a new thread</button>
+  </form>
+</div>
+<br>
+<div class="threads">
+  {% for thread in sticky %}
+  <div class="thread">
+    <a href="/{{board.url}}/thread/{{thread.pk}}"><img src="/media/{{thread.file}}"
+        alt="huston wir haben ein prbolem"></a>
+    <br>
+    <a href="/{{board.url}}/thread/{{thread.pk}}">{{thread.subject}}</a>:
+    {{thread.content|truncatechars:'64'}}
+  </div>
+  {% endfor %}
+
+  {% for thread in threads %}
+  <div class="thread">
+    <a href="/{{board.url}}/thread/{{thread.pk}}"><img src="/media/{{thread.file}}"
+        alt="huston wir haben ein prbolem"></a>
+    <br>
+    <a href="/{{board.url}}/thread/{{thread.pk}}">{{thread.subject}}</a>:
+    {{thread.content|truncatechars:'64'}}
+  </div>
+  {% endfor %}
+</div>
+{%endblock%}

@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2 class="boardname">/{{board.url}}/ {{ board.name }}</h2>
+
+{% if not thread.is_sticky %}
+
+<div class="thread_form" id="post">
+  <form method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">reply</button>
+  </form>
+</div>
+{% endif %}
+<div class="op">
+  {% if thread.file%}
+  <!--
+  <video width="320" height="240" controls>
+    <source src="/media/{{thread.file}}" type="video/webm">
+    Your browser does not support the video tag.
+  </video>
+-->
+  <img src="/media/{{thread.file}}" alt="">
+  {% endif %}
+
+  <div>
+    <p>
+      <b class="subject"> {{ thread.subject }}</b>
+      <b class="opname">{{ thread.poster }}</b> {{ thread.date_posted }} no. {{thread.pk}}
+    </p>
+
+    {{ thread.content }}
+  </div>
+</div>
+{% for reply in replies %}
+<div class="reply">
+  <p><b>{{reply.poster}}</b> {{reply.date_posted}} no. {{reply.pk}}</p>
+  <div class="replyhelper">
+    {% if reply.file %}
+    <!--
+      <video width="320" height="240" controls>
+        <source src="/media/{{reply.file}}" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    -->
+    <img src="/media/{{reply.file}}" alt="" style="max-width: 320px;">
+    {% endif %}
+    <div>
+      {{reply.content}}
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{%endblock%}

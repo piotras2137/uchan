@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{site.sitename}}</h1>
+<h2>frequently asked questions</h2>
+
+<table class="faqtable">
+    <tr>
+        <th>question</th>
+        <th>answer</th>
+    </tr>
+    {% for faq in faqs %}
+    <tr>
+        <td>
+            {{faq.question}}
+        </td>
+        <td>
+            {{faq.answer}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

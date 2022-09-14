@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{site.sitename}}</h1>
+<table class="ruletable">
+    <tr>
+        <th>rules</th>
+    </tr>
+    <tr>
+        <td>
+            <ol>
+                {% for rule in rules %}
+                <li>
+                    {{rule.rule}}
+                </li>
+                {% endfor %}
+            </ol>
+        </td>
+    </tr>
+</table>
+{% endblock %}

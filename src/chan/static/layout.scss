@@ -1,0 +1,187 @@
+$maincolor : lightgreen;
+$sfwpostcolor: lightblue;
+$sfwopnamecolor: green;
+$sfwsubjectcolor: darkblue;
+$sfwpostercolor: green;
+
+a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-style: solid;
+}
+
+th {
+    width: 100%;
+    background-color: $maincolor;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+}
+
+.wrap {
+    width: 80%;
+    margin-left: 10%;
+    display: block;
+}
+
+.sitename {
+    width: 100%;
+    text-align: center;
+}
+
+.halftitle {
+    width: 50%;
+}
+
+.faqtable {
+    tr {
+        td {
+            width: 50%;
+        }
+
+        th {
+            width: 50%;
+        }
+    }
+}
+
+.newslisttd {
+    display: flex;
+    justify-content: space-between;
+}
+
+.newstitle {
+    width: 100%;
+    text-align: center;
+}
+
+
+.boardname {
+    width: 100%;
+    text-align: center;
+}
+
+.boarddescription {
+    width: 100%;
+    text-align: center;
+}
+
+.thread_form {
+    background-color: $maincolor;
+    max-width: 50%;
+    margin-left: 25%;
+    border-style: solid;
+
+    label {
+        margin: 1rem;
+    }
+
+    input {
+        width: 97%;
+        margin-left: 1%;
+    }
+
+    textarea {
+        width: 97%;
+        margin-left: 1%;
+    }
+
+    button {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+}
+
+.nsf {
+    color: red;
+}
+
+.threads {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.thread {
+    margin-top: 1rem;
+    display: block;
+    max-width: 15%;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.op {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    img {
+        max-width: 30%;
+        margin: 1rem;
+    }
+
+    div {
+        margin: 1rem;
+
+        p {
+            font-size: larger;
+        }
+    }
+}
+
+.subject {
+    color: $sfwsubjectcolor;
+}
+
+.opname {
+    color: $sfwopnamecolor;
+}
+
+.reply {
+    display: table;
+    background-color: $sfwpostcolor;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+
+    img {
+        width: 200px;
+        margin: 0.5rem;
+    }
+
+    p {
+        margin-top: 0px;
+
+        b {
+            color: $sfwpostercolor;
+        }
+    }
+}
+
+.replyhelper {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0px;
+    padding: 0px;
+}
